@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1"/>
+    <title>Tone Generator</title>
+    <link rel="stylesheet" type="text/css" media="screen,print" href="style.css" />
+</head>
+<body>
+
+
+<h1>トーン・ジェネレータ</h1>
+
+<select id="typeSelect" onchange="onTypeChanged()">
+    <option value="sine" selected>正弦波</option>
+    <option value="square">方形波</option>
+    <option value="sawtooth">のこぎり波</option>
+    <option value="triangle">三角波</option>
+</select> 
+
+<div class="Input">
+    <input type="button" id="startButton" onclick="onStartButtonClick();" value="スタート"/>    
+    <input type="button" onclick="onResetButtonClick();" value="リセット"/>
+    <span id="hz"></span>[Hz]
+    <br>
+    <input type="button" onclick="changeHeltz(-1000);" value=" -1000"/>
+    <input type="button" onclick="changeHeltz(-100) ;" value=" -100"/>
+    <input type="button" onclick="changeHeltz(-10)  ;" value=" -10"/> 
+    <input type="button" onclick="changeHeltz(-1)   ;" value=" -1"/>
+    <br>
+    <input type="button" onclick="changeHeltz(1000) ;" value="+1000"/>
+    <input type="button" onclick="changeHeltz(100)  ;" value="+100"/> 
+    <input type="button" onclick="changeHeltz(10)   ;" value="+10"/>
+    <input type="button" onclick="changeHeltz(1)    ;" value="+1"/>
+</div>
+
+
+
+
+<script type="text/javascript" src="index.js"></script>
+</body>
+</html>
