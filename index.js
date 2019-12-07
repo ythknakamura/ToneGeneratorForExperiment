@@ -1,29 +1,20 @@
 window.AudioContext = window.AudioContext || window.webkitAudioContext;  
-var audioCtx = new window.AudioContext();
-var oscillator = audioCtx.createOscillator();
-oscillator.type = document.getElementById("typeSelect").value;
+var audioCtx = null;
+var oscillator;
 var start = false;
-var heltz;
+var heltz = 654;
 
-onResetButtonClick();
-
-function changeHeltz(diff){
-   heltz += diff;
-   heltz = Math.min(heltz, 20000);
-   heltz = Math.max(heltz, 20);
-   document.getElementById("hz").innerHTML = heltz;
-   oscillator.frequency.value = heltz;
-}
 
 function switchStart(to){
     start = to;
     var buttonEle =  document.getElementById("startButton");
-    if(start){ 
+    if (start) { 
+        if (audioCtx == null) audioCtx = new window.AudioContext();
         buttonEle.value = "ストップ";
-        buttonEle.parentNode.style.borderColor = "red";
+        buttonEle.parentNode.style.borderColor = "#F00";
         oscillator = audioCtx.createOscillator();
         oscillator.connect( audioCtx.destination );
-        oscillator.type =  document.getElementById("typeSelect").value;
+        oscillator.type = "sine";
         oscillator.frequency.value = heltz;
         oscillator.start();
     }
@@ -35,18 +26,6 @@ function switchStart(to){
 }
 
 //イベント
-function onTypeChanged(){
-    for (var n in oscillator) {
-        oscillator.type = document.getElementById("typeSelect").value;
-    }
-}
-
 function onStartButtonClick(){
     switchStart(!start);
-}
-
-function onResetButtonClick(){
-    if(start)switchStart(false);
-    heltz = 440;
-    changeHeltz(0);
 }
