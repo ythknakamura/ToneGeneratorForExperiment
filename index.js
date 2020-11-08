@@ -2,7 +2,7 @@ window.AudioContext = window.AudioContext || window.webkitAudioContext;
 var audioCtx = null;
 var oscillator;
 var start = false;
-var heltz = 654;
+var heltz = 678;
 
 
 function switchStart(to){
